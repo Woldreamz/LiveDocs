@@ -5,9 +5,9 @@ import {
   RoomProvider,
 } from "@liveblocks/react";
 
-const Provider = () => {
+const Provider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <LiveblocksProvider publicApiKey={"pk_dev_NTIKI…1ALC4D"}>
+    <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
       <RoomProvider id="my-room">
         <ClientSideSuspense fallback={<div>Loading…</div>}>
           {children}
