@@ -1,18 +1,12 @@
-import React from "react";
-import {
-  ClientSideSuspense,
-  LiveblocksProvider,
-  RoomProvider,
-} from "@liveblocks/react";
+"use client";
+
+import { ClientSideSuspense, LiveblocksProvider } from "@liveblocks/react";
+import Loader from "@/components/Loader";
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
   return (
     <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
-      <RoomProvider id="my-room">
-        <ClientSideSuspense fallback={<div>Loading…</div>}>
-          {children}
-        </ClientSideSuspense>
-      </RoomProvider>
+      <ClientSideSuspense fallback={<Loader />}>{children}</ClientSideSuspense>
     </LiveblocksProvider>
   );
 };
